@@ -5,3 +5,15 @@
 1. dao 层是和底层交互的，所以要 Wrap
 2. 中间层传递错误，可以用 WithMessage 保存信息，也可以使用 withStack 仅用来保存堆栈信息
 3. 最上层使用 error 判等操作来屏蔽底层的 SQL 报错（业务无需关心底层的数据实现），仅返回 404 Not Found
+
+老师：
+
+    dao:
+
+        return errors.Wrapf(code.NotFound, fmt.Sprintf("sql: %s error: %v", sql, err))
+
+    biz:
+
+        if errors.Is(err, code.NotFound} {
+            //
+        }

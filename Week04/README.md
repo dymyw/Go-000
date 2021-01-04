@@ -4,6 +4,7 @@
 
 ### 目录结构
 
+```
 - account
     - api                   应用接口层
     - cmd                   可执行文件目录
@@ -22,3 +23,4 @@
     - test                  测试数据
     - go.mod
     - README.md
+```

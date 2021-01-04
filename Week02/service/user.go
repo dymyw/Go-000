@@ -1,16 +1,18 @@
 package service
 
 import (
-	"Week02/dao"
-	"Week02/model"
-	"github.com/pkg/errors"
+	"Week02/biz"
+	"fmt"
 )
 
-func GetUserById(id int) (*model.User, error) {
-	user, err := dao.GetUserById(id)
+// service -> biz -> dao
+
+func BatchGetUser() {
+	user, err := biz.BatchGetUser()
 	if err != nil {
-		return nil, errors.WithMessage(err, "service GetUserById failed!")
+		fmt.Printf("%+v\n", err)
+		return
 	}
 
-	return user, nil
+	fmt.Println(user)
 }

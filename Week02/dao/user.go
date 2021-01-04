@@ -1,18 +1,41 @@
 package dao
 
 import (
-	"Week02/model"
+	"Week02/code"
 	"database/sql"
 	"github.com/pkg/errors"
 )
 
-func GetUserById(id int) (*model.User, error) {
-	// 模拟数据
-	user := &model.User{}
+type User struct {
+	Id int
+	Name string
+}
+
+func BatchGetUser()	([]User, error) {
+	// db
+	// 暂时不知道放哪里
+	//db, err := sql.Open("mysql", "user:password@tcp(127.0.0.1:3306)/hello")
+	//if err != nil {
+	//	log.Fatal(err)
+	//}
+	//defer db.Close()
+
+	// 查询
+	//sql := "SELECT * FROM users WHERE is_vip = ?"
+	//rows, err := db.Query(sql, 1)
+	//if err != nil {
+	//	// ...
+	//}
+
+	// 获取 error
+	//err = rows.Err()
 	err := sql.ErrNoRows
 	if err != nil {
-		return nil, errors.Wrap(err, "dao GetUserById failed!")
+		// sql.ErrNoRows
+		// 重点：内部吞掉，用一个默认的错误返回
+		// 好处：上层看不到底层实现，看到的是一个业务错误码
+		return nil, errors.Wrapf(code.NotFound, "sql error: %v", err)
 	}
 
-	return user, nil
+	return []User{}, nil
 }

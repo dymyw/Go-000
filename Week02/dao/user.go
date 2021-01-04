@@ -33,7 +33,8 @@ func BatchGetUser()	([]User, error) {
 	if err != nil {
 		// sql.ErrNoRows
 		// 重点：内部吞掉，用一个默认的错误返回
-		// 好处：上层看不到底层实现，看到的是一个业务错误码
+		// 好处：上层看不到底层实现，看到的是一个业务错误码（DDD 思想）
+		// wrap 包含 stack stace 堆栈信息
 		return nil, errors.Wrapf(code.NotFound, "sql error: %v", err)
 	}
 

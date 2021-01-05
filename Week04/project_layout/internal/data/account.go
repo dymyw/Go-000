@@ -5,15 +5,21 @@ import (
 	"database/sql"
 )
 
+var _ biz.AccountRepo = &accountRepo{}
+//var _ biz.AccountRepo = new(accountRepo)
+//var _ biz.AccountRepo = (*accountRepo)(nil)
+
 // NewAccountRepo
 func NewAccountRepo(db *sql.DB) biz.AccountRepo {
-	return new(AccountRepo)
+	return &accountRepo{db: db}
 }
 
 // AccountRepo
-type AccountRepo struct {}
+type accountRepo struct {
+	db *sql.DB
+}
 
 // SaveAccount
-func (ar *AccountRepo) SaveAccount(a *biz.Account) {
+func (ar *accountRepo) SaveAccount(a *biz.Account) {
 	//
 }

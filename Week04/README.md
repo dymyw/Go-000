@@ -5,8 +5,11 @@
 ### 目录结构
 
 ```
-- account
+- project_layout
     - api                   应用接口层
+        - account
+            - v1
+                - account.pb.go
     - cmd                   可执行文件目录
         - account_admin         运营管理
         - account-interface     BFF
@@ -19,7 +22,6 @@
         - data                  数据访问层
         - pkg                   内部可复用库代码
         - service               服务层
-    - pkg                   外部可复用库代码
     - test                  测试数据
     - go.mod
     - README.md

@@ -17,13 +17,7 @@ type Address struct {
 // AccountRepo
 type AccountRepo interface {
 	SaveAccount(*Account)
-	BatchGetAccount([]Account)
-}
-
-// AccountUserCase
-type AccountUserCase struct {
-	// 依赖 repo
-	repo AccountRepo
+	//BatchGetAccount([]Account)
 }
 
 // NewAccountUserCase
@@ -31,6 +25,12 @@ func NewAccountUserCase(repo AccountRepo) *AccountUserCase {
 	// 依赖注入，利用抽象、实现来解耦
 	// 实现了 AccountRepo 的 repo 都可以传入，实现解耦
 	return &AccountUserCase{repo: repo}
+}
+
+// AccountUserCase
+type AccountUserCase struct {
+	// 依赖 repo
+	repo AccountRepo
 }
 
 // Sign in

@@ -16,6 +16,7 @@ func BatchGetUser() ([]dao.User, error) {
 		// 		biz error 处理业务逻辑错误
 		// 		sql 不依赖 db、cache
 		if errors.Is(err, code.NotFound) {
+			//fmt.Printf("%+v\n", err)
 			return nil, UserNotFound
 		}
 	}

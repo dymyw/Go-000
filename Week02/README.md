@@ -17,3 +17,8 @@
         if errors.Is(err, code.NotFound} {
             //
         }
+    
+    service:
+    
+        -> grpc status
+        -> http code
